@@ -36,5 +36,5 @@ email_agent_executor = AgentExecutor(agent=email_agent, tools=email_tools, verbo
 
 @tool
 def call_email_agent(request:str):
-    """call the email agent to handle a request,request is handle by llm"""
+    """send a request to the email handling agent"""
     return email_agent_executor.invoke({"input":request})
