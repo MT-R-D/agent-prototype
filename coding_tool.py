@@ -27,6 +27,6 @@ chain = prompt_template | model | output_parser
 
 
 @tool
-def call_coding_agent(language:str,request:str,additional_notes:str):
-    """call the coding agent to generate code from a request"""
-    return chain.invoke({"language":language,"request":request,"additional_notes":additional_notes})
+def call_coding_agent(language: str, request: str, additional_notes: str):
+    """send a request to the code generation llm agent."""
+    return chain.invoke({"language": language, "request": request, "additional_notes": additional_notes})

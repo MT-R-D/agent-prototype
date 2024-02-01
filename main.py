@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 @tool
 def get_email_address(name: str) -> str:
     """get email address given contact name"""
@@ -18,17 +19,21 @@ def get_email_address(name: str) -> str:
         return "talal@gmail.com"
     else:
         return "no contact found"
-    
+
+
 @tool
-def sent_email(text:str,email:str):
+def sent_email(text: str, email: str):
     """send an email to a specific email address with the content of text"""
     print("sent email")
+
+
 # Get the prompt to use - you can modify this!
-tools = [get_email_address,sent_email]
+tools = [get_email_address, sent_email]
 prompt = hub.pull("hwchase17/openai-functions-agent")
 prompt.messages
 
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 agent = create_openai_functions_agent(llm, tools, prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-agent_executor.invoke({"input": "sent email to talal i want to meet u at 8:00pm "})
+agent_executor.invoke(
+    {"input": "I want an email to be sent to mosab, to meet me on sunday,"})
